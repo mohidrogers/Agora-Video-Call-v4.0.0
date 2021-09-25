@@ -29,11 +29,11 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
     // Fill the App ID of your project generated on Agora Console.
-    private String appId = "e657fa82ed7245b7a718ac7f5a6ff00f";
+    private String appId = "your app id";
     // Fill the channel name.
-    private String channelName = "video call";
+    private String channelName = "your channel name";
     // Fill the temp token generated on Agora Console.
-    private String token = "006e657fa82ed7245b7a718ac7f5a6ff00fIAAf79MNkm73R0nMOb42RvxTKvD3gpviiSYMvKP54hlymPwFm7AAAAAAEAAoMHytmW5PYQEAAQCVbk9h";
+    private String token = "your token id";
     private void initializeAndJoinChannel() {
         try {
             RtcEngineConfig config = new RtcEngineConfig();
