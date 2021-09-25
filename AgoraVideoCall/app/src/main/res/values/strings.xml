@@ -2,9 +2,9 @@
     <string name="app_name">Agora Video Call</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="agora_app_id" translatable="false">e657fa82ed7245b7a718ac7f5a6ff00f</string>
+    <string name="agora_app_id" translatable="false"><your app id></string>
 
-    <string name="agora_access_token" translatable="false">006e657fa82ed7245b7a718ac7f5a6ff00fIAAf79MNkm73R0nMOb42RvxTKvD3gpviiSYMvKP54hlymPwFm7AAAAAAEAAoMHytmW5PYQEAAQCVbk9h</string>
+    <string name="agora_access_token" translatable="false"><your token id></string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
