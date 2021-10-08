@@ -2,7 +2,7 @@ package com.example.agoravideocall;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
+import android.widget.Toast;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.view.SurfaceView;
@@ -16,6 +16,7 @@ import io.agora.rtc2.RtcEngineConfig;
 import io.agora.rtc2.video.VideoCanvas;
 import io.agora.rtc2.ChannelMediaOptions;
 
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -26,6 +27,8 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     // Fill the App ID of your project generated on Agora Console.
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     // Fill the channel name.
     private String channelName = "your channel name";
     // Fill the temp token generated on Agora Console.
-    private String token = "your token id";
+    private String token = "your token";
     private void initializeAndJoinChannel() {
         try {
             RtcEngineConfig config = new RtcEngineConfig();
@@ -89,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     };
+    private boolean mMuted;
+    private ImageView mMuteBtn;
     private static final int PERMISSION_REQ_ID = 22;
     private static final String[] REQUESTED_PERMISSIONS = {
             Manifest.permission.RECORD_AUDIO,
@@ -113,6 +118,21 @@ public class MainActivity extends AppCompatActivity {
             initializeAndJoinChannel();
         }
     }
+    public void muteChannel(View view) {
+        mMuted = !mMuted;
+        // Stops/Resumes sending the local audio stream.
+        if(mMuted){
+        mRtcEngine.muteLocalAudioStream(mMuted);
+        Toast.makeText(this,"Call Muted", Toast.LENGTH_SHORT).show();}
+        else{
+            mRtcEngine.muteLocalAudioStream(mMuted);
+            Toast.makeText(this,"Call Unmuted", Toast.LENGTH_SHORT).show();
+        }
+        //Toast.makeText(this,"Call Unmuted", Toast.LENGTH_LONG).show();
+        //int res = mMuted ? R.drawable.btn_mute : R.drawable.btn_unmute;
+        //mMuteBtn.setImageResource(res);mute
+    }
+
     protected void onDestroy() {
         super.onDestroy();
         mRtcEngine.stopPreview();
@@ -140,5 +160,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private void leaveChannel(View view) {
+        mRtcEngine.leaveChannel();
     }
 }
